@@ -1,0 +1,9 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+#ifndef __FOUNDATION_XX__STRING__
+#define __FOUNDATION_XX__STRING__
+
+#include "_String/BaseString.h"
+#include "_String/AsciiString.h"
+
+#endif //__FOUNDATION_XX__STRING__

@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+#ifndef __FOUNDATION_XX__INT__H__
+#define __FOUNDATION_XX__INT__H__
+
+namespace foundation {
+
+typedef char i8;
+typedef short i16;
+typedef int i32;
+typedef long i64;
+
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned u32;
+typedef unsigned long u64;
+
+typedef unsigned long sizeT;
+typedef long ssizeT;
+
+};
+
+#endif //__FOUNDATION_XX__INT__H__
