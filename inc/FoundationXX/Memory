@@ -1,0 +1,9 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+#ifndef __FOUNDATION_XX__MEMORY__
+#define __FOUNDATION_XX__MEMORY__
+
+#include "_Memory/Allocator.h"
+#include "_Memory/Pointer.h"
+
+#endif //__FOUNDATION_XX__MEMORY__
