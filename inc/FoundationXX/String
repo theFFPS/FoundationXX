@@ -3,11 +3,9 @@
 #ifndef __FOUNDATION_XX__STRING__
 #define __FOUNDATION_XX__STRING__
 
-#include "_String/BaseString.h"
 #include "_String/AsciiString.h"
 #include "_String/Utf8String.h"
 #include "_String/Utf16String.h"
 #include "_String/Utf32String.h"
-#include "_String/Utf64String.h"
 
 #endif //__FOUNDATION_XX__STRING__

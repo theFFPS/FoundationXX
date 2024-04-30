@@ -3,11 +3,11 @@
 #ifndef __FOUNDATION_XX__STRING__ASCII_STRING__H__
 #define __FOUNDATION_XX__STRING__ASCII_STRING__H__
 
-#include "BaseString.h"
+#include <FoundationXX/_Array/BaseArray.h>
 
 namespace foundation {
 
-typedef BaseString<char> AsciiString;
+typedef BaseArray<char> AsciiString;
 
 };
 
