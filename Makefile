@@ -10,7 +10,10 @@ all:
 	@echo "You should compile it by using OS-specific build script or via make <OSNAME>"
 linux: $(OBJS)
 	@mkdir -p build
+	@mkdir -p example/target
 	@$(CXX) $(CXX_OPTS) -o target/libfoundationxx.so $(OBJS) -shared
+
+	
 bin/%.cpp.o: src/%.cpp
 	@mkdir -p bin
 	@echo "    CC $^"
