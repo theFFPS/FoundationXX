@@ -2,6 +2,7 @@
 
 #include <FoundationXX/String>
 #include <cstdio>
+#include <string>
 using namespace foundation;
 
 int main() {

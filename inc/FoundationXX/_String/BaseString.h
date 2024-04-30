@@ -14,19 +14,15 @@ private:
     u64 m_size = 0; 
 public:
     BaseString() {}
-    BaseString(T *data) {
-        for (;; m_size++) if (!data[i]) break;
-        memcpy(data, m_data, m_size);
+    BaseString(const T *data) {
+        for (;; m_size++) if (!data[m_size]) break;
+        m_data = new T [m_size];
+        memcpy(m_data, data, m_size);
     }
-    BaseString(T *data, u64 size) {
+    BaseString(const T *data, u64 size) {
         m_data = new T [size];
         m_size = size;
-        memcpy(data, m_data, m_size);
-    }
-    BaseString(BaseString<T> value) {
-        m_data = new T [value.Size()];
-        m_size = value.Size();
-        for (u64 i = 0; i < m_size; i++) m_data[i] = value.Data()[i];
+        memcpy(m_data, data, m_size);
     }
 
     ~BaseString() {
@@ -69,12 +65,56 @@ public:
         return *this;
     }
     BaseString<T>& swapCharsEndian() {
-        for (u64 i = 0; i < m_size; i++) SwapCharEndian(i);
+        for (u64 i = 0; i < m_size; i++) swapCharEndian(i);
         return *this;
     }
     BaseString<T> swapCharsEndian() const {
-        for (u64 i = 0; i < m_size; i++) SwapCharEndian(i);
+        for (u64 i = 0; i < m_size; i++) swapCharEndian(i);
         return *this;
+    }
+
+    BaseString<T>& append(T ch) {
+        T *tmp = new T [m_size];
+        memcpy(tmp, m_data, m_size);
+        m_size++;
+        delete[] m_data;
+        m_data = new T [m_size];
+        memcpy(m_data, tmp, m_size);
+        delete[] tmp;
+        m_data[m_size-1] = ch;
+        return *this;
+    }
+    BaseString<T>& append(const T *val) {
+        u64 valSize = 0;
+        for (;; valSize++) if (!val[valSize]) break;
+        for (u64 i = 0; i < valSize; i++) append(val[i]);
+        return *this;
+    }
+    BaseString<T>& append(BaseString<T> val) {
+        for (u64 i = 0; i < val.size(); i++) append(val[i]);
+        return *this;
+    }
+
+    BaseString<T>& operator+=(T ch) {
+        return append(ch);
+    }
+    BaseString<T>& operator+=(const T *val) {
+        return append(val);
+    }
+    BaseString<T>& operator+=(BaseString<T> val) {
+        return append(val);
+    }
+    BaseString<T>& operator+(T ch) {
+        return append(ch);
+    }
+    BaseString<T>& operator+(const T *val) {
+        return append(val);
+    }
+    BaseString<T>& operator+(BaseString<T> val) {
+        return append(val);
+    }
+    T operator[](u64 pos) {
+        return m_data[pos];
     }
 };
 

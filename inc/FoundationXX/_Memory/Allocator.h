@@ -27,11 +27,11 @@ template<typename T> void unallocate(Pointer<T> pointer) {
 }
 template<typename T> Pointer<T> allocate(u64 size) {
     if (allocatorConfig.hasMaxPointerSize && size * sizeof(T) > allocatorConfig.maxPointerSize) {
-        perror("Unable to allocate %llu because max pointer size is %llu!\n", size * sizeof(T), allocatorConfig.maxPointerSize);
+        printf("Unable to allocate %llu because max pointer size is %llu!\n", size * sizeof(T), allocatorConfig.maxPointerSize);
         return Pointer<T>();
     }
     if (allocatorConfig.hasMaxMemory && FOUNDATIONXX__allocated + (size * sizeof(T)) > allocatorConfig.maxMemory) {
-        perror("Unable to allocate %llu because memory reserve (%llu) will be overflowed!\n", size * sizeof(T), allocatorConfig.maxMemory);
+        printf("Unable to allocate %llu because memory reserve (%llu) will be overflowed!\n", size * sizeof(T), allocatorConfig.maxMemory);
         return Pointer<T>();
     }
     FOUNDATIONXX__allocated += size * sizeof(T);
@@ -50,11 +50,11 @@ template<typename T> Pointer<T> reallocate(Pointer<T> pointer, u64 size) {
 }
 template<typename T> Pointer<T> allocateRaw(u64 size) {
     if (allocatorConfig.hasMaxPointerSize && size > allocatorConfig.maxPointerSize) {
-        perror("Unable to allocate %llu because max pointer size is %llu!\n", size, allocatorConfig.maxPointerSize);
+        printf("Unable to allocate %llu because max pointer size is %llu!\n", size, allocatorConfig.maxPointerSize);
         return Pointer<T>();
     }
     if (allocatorConfig.hasMaxMemory && FOUNDATIONXX__allocated + (size) > allocatorConfig.maxMemory) {
-        perror("Unable to allocate %llu because memory reserve (%llu) will be overflowed!\n", size, allocatorConfig.maxMemory);
+        printf("Unable to allocate %llu because memory reserve (%llu) will be overflowed!\n", size, allocatorConfig.maxMemory);
         return Pointer<T>();
     }
     FOUNDATIONXX__allocated += size;
