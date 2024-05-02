@@ -1,2 +1,2 @@
 # FoundationXX
-Alternative to C++'s STD Library
+An alternative to C++'s STD Library
